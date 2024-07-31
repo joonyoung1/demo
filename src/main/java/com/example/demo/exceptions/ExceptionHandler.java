@@ -7,9 +7,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
@@ -20,9 +20,9 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException exception,
-            HttpHeaders httpHeaders, HttpStatusCode httpStatusCode,
-            WebRequest webRequest) {
+            @NonNull MethodArgumentNotValidException exception,
+            @NonNull HttpHeaders httpHeaders, @NonNull HttpStatusCode httpStatusCode,
+            @NonNull WebRequest webRequest) {
         Map<String, Object> objectBody = new LinkedHashMap<>();
         objectBody.put("Current Timestamp", new Date());
         objectBody.put("Status", httpStatusCode.value());
