@@ -1,0 +1,39 @@
+spring:
+    application:
+        name: demo
+    
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: ${SPRING_MAIL_USERNAME}
+        password: ${SPRING_MAIL_PASSWORD}
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+    
+    datasource:
+        url: ${SPRING_DATASOURCE_URL}
+        username: ${SPRING_DATASOURCE_USERNAME}
+        password: ${SPRING_DATASOURCE_PASSWORD}
+    
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                '[globally_quoted_identifiers]': true
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+
+server:
+    port: 8080
+
+management:
+    endpoints:
+        web:
+            base_path: /details
+            exposure:
+                include: "*"
