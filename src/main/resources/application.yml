@@ -36,6 +36,10 @@ spring:
             host: 127.0.0.1
             port: 6379
 
+    output:
+        ansi:
+            enabled: always
+
 server:
     port: 8080
 
@@ -45,3 +49,11 @@ management:
             base_path: /details
             exposure:
                 include: "*"
+
+debug: true
+trace: true
+
+logging:
+    file:
+        path: logs/
+        name: logs/application.log
